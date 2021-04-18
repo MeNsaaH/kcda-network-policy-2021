@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    tier: backend
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+        networking/allow-db-access: "true"
+    spec:
+      containers:
+      - name: nginx
+        image: mensaah/nginx-curl-telnet
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: NodePort
+  selector:
+    tier: backend
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

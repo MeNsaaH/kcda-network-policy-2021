@@ -1,0 +1,15 @@
+namespace: demo
+resources:
+  - allow-dns-access.yaml
+  - allow-internet-access.yaml
+  - backend/allow-backend-access.yaml
+  - backend/allowed-to-access-backend.yaml
+  - backend/manifest.yaml
+  - db/allow-db-access.yaml
+  - db/allowed-to-access-db.yaml
+  - db/manifest.yaml
+  - default-deny.yaml
+  - frontend/allow-frontend-access.yaml
+#  - frontend/allowed-to-access-frontend.yaml
+  - frontend/manifest.yaml
+  - namespace.yaml

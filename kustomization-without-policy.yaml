@@ -1,0 +1,6 @@
+namespace: demo
+resources:
+  - backend/manifest.yaml
+  - db/manifest.yaml
+  - frontend/manifest.yaml
+  - namespace.yaml

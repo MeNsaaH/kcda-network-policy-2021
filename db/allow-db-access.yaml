@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-db-access
+spec:
+  podSelector:
+    matchLabels:
+      networking/allow-db-access: "true"
+  policyTypes:
+    - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          tier: "db"
+    - ipBlock:
+        cidr: 10.101.39.3/32
+    ports:
+    - protocol: TCP
+      port: 3306
